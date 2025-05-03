@@ -1,9 +1,3 @@
-`INSTRUCTION.md` should be created with the instructions on how to deploy the app to k8s
-1. `INSTRUCTION.md` Should have explained your choice of resource requests and limits
-1. `INSTRUCTION.md` Should have explained your choice of HPA configuration
-1. `INSTRUCTION.md` Should have explained your strategy configuration (Why such numbers)
-1. `INSTRUCTION.md` Should have explained how to access the app after deployment
-
 ## 1. Create handy aliases and switch to yml files directory:  
 `alias kub=kubectl`  
 `alias cls=clear`  
@@ -25,7 +19,15 @@ set it as default:
 `kub apply -f deployment.yml`  
 
 ## 6. Strategy configuration, HPA configuration  
-Are defined by the task.  
+Are defined by the task:
+    > Autoscaler should define
+    > 1. Minimum number of pods as 2
+    > 2. Maximum number of pods as 5
+    > 3. Autoscale should be triggered by both CPU and Memory  
+
+    > Deployment should have
+    > 1. Strategy: RollingUpdate
+    > 1. Resource requests and limits (in the idle state you should have 2 pods running)
 
 ## 7. Access the app after deployment  
 Wait until `kub get pods` shows that all pod are 1/1 Running.

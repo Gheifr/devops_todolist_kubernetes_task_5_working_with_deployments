@@ -15,23 +15,23 @@ spec:
       app: todoapp
   template:
    metadata:
-     labels:
-       app: todoapp
+      labels:
+        app: todoapp
    spec:
-     containers:
-     - name: todoapp
-       image: ikulyk404/todoapp:3.0.0
-       ports:
-       - containerPort: 8080
-       livenessProbe:
-         httpGet:
-           path: /api/health
-           port: 8080
-         initialDelaySeconds: 5
-         periodSeconds: 5
-       readinessProbe:
-         httpGet:
-           path: /api/ready
-           port: 8080
-         initialDelaySeconds: 5
-         periodSeconds: 5
+    containers:
+    - name: todoapp
+    image: ikulyk404/todoapp:3.0.0
+    ports:
+    - containerPort: 8080
+      livenessProbe:
+        httpGet:
+          path: /api/health
+          port: 8080
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      readinessProbe:
+        httpGet:
+          path: /api/ready
+          port: 8080
+        initialDelaySeconds: 5
+        periodSeconds: 5
